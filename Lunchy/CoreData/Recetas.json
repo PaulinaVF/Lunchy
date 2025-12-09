@@ -1,0 +1,367 @@
+[
+  {
+    "nombre": "Ensalada de pollo fresca",
+    "tipo": "carne",
+    "ingredientes": [
+      { "id": "ing_pechuga_pollo", "cantidad": 120, "unidad": "g" },
+      { "id": "ing_lechuga", "cantidad": 50, "unidad": "g" },
+      { "id": "ing_tomate", "cantidad": 50, "unidad": "g" },
+      { "id": "ing_cebolla_blanca", "cantidad": 20, "unidad": "g" },
+      { "id": "ing_limon", "cantidad": 1, "unidad": "pzas" },
+      { "id": "ing_aceite_oliva", "cantidad": 10, "unidad": "g" },
+      { "id": "ing_sal", "cantidad": 1, "unidad": "g" },
+      { "id": "ing_pimienta_negra", "cantidad": 1, "unidad": "g" }
+    ],
+    "tiempo_preparacion_min": 15,
+    "tiempo_coccion_min": 15,
+    "pasos": [
+      "1. Cocina la pechuga de pollo y déjala enfriar.",
+      "2. Lava las verduras.",
+      "3. Corta la lechuga, tomate y cebolla.",
+      "4. Deshebra o corta el pollo.",
+      "5. Mezcla todos los ingredientes.",
+      "6. Aliña con limón, aceite, sal y pimienta."
+    ]
+  },
+
+  {
+    "nombre": "Bowl de arroz con pollo y verduras",
+    "tipo": "carne",
+    "ingredientes": [
+      { "id": "ing_arroz_blanco", "cantidad": 120, "unidad": "g" },
+      { "id": "ing_pechuga_pollo", "cantidad": 150, "unidad": "g" },
+      { "id": "ing_zanahoria", "cantidad": 60, "unidad": "g" },
+      { "id": "ing_cebolla_blanca", "cantidad": 20, "unidad": "g" },
+      { "id": "ing_ajo", "cantidad": 5, "unidad": "g" },
+      { "id": "ing_aceite_oliva", "cantidad": 10, "unidad": "g" },
+      { "id": "ing_sal", "cantidad": 2, "unidad": "g" },
+      { "id": "ing_pimienta_negra", "cantidad": 1, "unidad": "g" }
+    ],
+    "tiempo_preparacion_min": 15,
+    "tiempo_coccion_min": 25,
+    "pasos": [
+      "1. Cocina el arroz.",
+      "2. Pica zanahoria, cebolla y ajo.",
+      "3. Corta el pollo en cubos.",
+      "4. Sofríe cebolla y ajo.",
+      "5. Agrega el pollo y sazona.",
+      "6. Añade zanahoria y cocina.",
+      "7. Sirve sobre el arroz."
+    ]
+  },
+
+  {
+    "nombre": "Pasta con pollo y verduras",
+    "tipo": "carne",
+    "ingredientes": [
+      { "id": "ing_pasta_corta", "cantidad": 100, "unidad": "g" },
+      { "id": "ing_pechuga_pollo", "cantidad": 150, "unidad": "g" },
+      { "id": "ing_tomate", "cantidad": 60, "unidad": "g" },
+      { "id": "ing_cebolla_blanca", "cantidad": 25, "unidad": "g" },
+      { "id": "ing_ajo", "cantidad": 5, "unidad": "g" },
+      { "id": "ing_aceite_oliva", "cantidad": 10, "unidad": "g" },
+      { "id": "ing_sal", "cantidad": 2, "unidad": "g" },
+      { "id": "ing_pimienta_negra", "cantidad": 1, "unidad": "g" }
+    ],
+    "tiempo_preparacion_min": 10,
+    "tiempo_coccion_min": 20,
+    "pasos": [
+      "1. Cocina la pasta.",
+      "2. Corta el pollo.",
+      "3. Pica tomate, cebolla y ajo.",
+      "4. Sofríe ajo y cebolla.",
+      "5. Agrega pollo y sazona.",
+      "6. Añade tomate.",
+      "7. Mezcla con la pasta."
+    ]
+  },
+
+  {
+    "nombre": "Pescado a la plancha con ensalada sencilla",
+    "tipo": "carne",
+    "ingredientes": [
+      { "id": "ing_filete_pescado_blanco", "cantidad": 150, "unidad": "g" },
+      { "id": "ing_lechuga", "cantidad": 50, "unidad": "g" },
+      { "id": "ing_tomate", "cantidad": 50, "unidad": "g" },
+      { "id": "ing_limon", "cantidad": 1, "unidad": "pzas" },
+      { "id": "ing_aceite_oliva", "cantidad": 8, "unidad": "g" },
+      { "id": "ing_sal", "cantidad": 1, "unidad": "g" },
+      { "id": "ing_pimienta_negra", "cantidad": 1, "unidad": "g" }
+    ],
+    "tiempo_preparacion_min": 10,
+    "tiempo_coccion_min": 12,
+    "pasos": [
+      "1. Sazona el pescado.",
+      "2. Cocínalo en sartén.",
+      "3. Lava la lechuga y tomate.",
+      "4. Corta las verduras.",
+      "5. Aliña la ensalada.",
+      "6. Sirve junto al pescado."
+    ]
+  },
+
+  {
+    "nombre": "Arroz frito sencillo con verduras",
+    "tipo": "vegetal",
+    "ingredientes": [
+      { "id": "ing_arroz_blanco", "cantidad": 120, "unidad": "g" },
+      { "id": "ing_cebolla_blanca", "cantidad": 20, "unidad": "g" },
+      { "id": "ing_zanahoria", "cantidad": 60, "unidad": "g" },
+      { "id": "ing_ajo", "cantidad": 5, "unidad": "g" },
+      { "id": "ing_aceite_oliva", "cantidad": 8, "unidad": "g" },
+      { "id": "ing_sal", "cantidad": 2, "unidad": "g" },
+      { "id": "ing_pimienta_negra", "cantidad": 1, "unidad": "g" }
+    ],
+    "tiempo_preparacion_min": 10,
+    "tiempo_coccion_min": 10,
+    "pasos": [
+      "1. Cocina el arroz y deja enfriar.",
+      "2. Pica zanahoria, cebolla y ajo.",
+      "3. Sofríe las verduras.",
+      "4. Agrega el arroz.",
+      "5. Sazona al gusto."
+    ]
+  },
+
+  {
+    "nombre": "Tacos de pollo con verduras",
+    "tipo": "carne",
+    "ingredientes": [
+      { "id": "ing_pechuga_pollo", "cantidad": 150, "unidad": "g" },
+      { "id": "ing_tortilla_harina", "cantidad": 2, "unidad": "pzas" },
+      { "id": "ing_cebolla_blanca", "cantidad": 20, "unidad": "g" },
+      { "id": "ing_tomate", "cantidad": 40, "unidad": "g" },
+      { "id": "ing_limon", "cantidad": 1, "unidad": "pzas" },
+      { "id": "ing_sal", "cantidad": 2, "unidad": "g" },
+      { "id": "ing_pimienta_negra", "cantidad": 1, "unidad": "g" }
+    ],
+    "tiempo_preparacion_min": 10,
+    "tiempo_coccion_min": 15,
+    "pasos": [
+      "1. Cocina el pollo y córtalo.",
+      "2. Pica cebolla y tomate.",
+      "3. Mezcla pollo con verduras.",
+      "4. Agrega limón, sal y pimienta.",
+      "5. Calienta tortillas.",
+      "6. Arma los tacos."
+    ]
+  },
+
+  {
+    "nombre": "Carne molida con arroz y verduras",
+    "tipo": "carne",
+    "ingredientes": [
+      { "id": "ing_molida_res", "cantidad": 180, "unidad": "g" },
+      { "id": "ing_arroz_blanco", "cantidad": 120, "unidad": "g" },
+      { "id": "ing_cebolla_blanca", "cantidad": 20, "unidad": "g" },
+      { "id": "ing_zanahoria", "cantidad": 50, "unidad": "g" },
+      { "id": "ing_ajo", "cantidad": 5, "unidad": "g" },
+      { "id": "ing_sal", "cantidad": 2, "unidad": "g" },
+      { "id": "ing_pimienta_negra", "cantidad": 1, "unidad": "g" },
+      { "id": "ing_aceite_oliva", "cantidad": 10, "unidad": "g" }
+    ],
+    "tiempo_preparacion_min": 12,
+    "tiempo_coccion_min": 20,
+    "pasos": [
+      "1. Cocina el arroz.",
+      "2. Sofríe ajo y cebolla.",
+      "3. Agrega carne molida.",
+      "4. Incorpora zanahoria.",
+      "5. Sazona y sirve con arroz."
+    ]
+  },
+
+  {
+    "nombre": "Pasta con carne molida estilo rápido",
+    "tipo": "carne",
+    "ingredientes": [
+      { "id": "ing_pasta_corta", "cantidad": 110, "unidad": "g" },
+      { "id": "ing_molida_res", "cantidad": 160, "unidad": "g" },
+      { "id": "ing_ajo", "cantidad": 5, "unidad": "g" },
+      { "id": "ing_cebolla_blanca", "cantidad": 25, "unidad": "g" },
+      { "id": "ing_tomate", "cantidad": 60, "unidad": "g" },
+      { "id": "ing_sal", "cantidad": 2, "unidad": "g" },
+      { "id": "ing_pimienta_negra", "cantidad": 1, "unidad": "g" },
+      { "id": "ing_aceite_oliva", "cantidad": 10, "unidad": "g" }
+    ],
+    "tiempo_preparacion_min": 10,
+    "tiempo_coccion_min": 20,
+    "pasos": [
+      "1. Cocina la pasta.",
+      "2. Sofríe cebolla y ajo.",
+      "3. Agrega carne molida.",
+      "4. Añade tomate picado.",
+      "5. Mezcla con la pasta."
+    ]
+  },
+
+  {
+    "nombre": "Wrap de pollo con lechuga y tomate",
+    "tipo": "carne",
+    "ingredientes": [
+      { "id": "ing_tortilla_harina", "cantidad": 1, "unidad": "pzas" },
+      { "id": "ing_pechuga_pollo", "cantidad": 140, "unidad": "g" },
+      { "id": "ing_lechuga", "cantidad": 50, "unidad": "g" },
+      { "id": "ing_tomate", "cantidad": 45, "unidad": "g" },
+      { "id": "ing_limon", "cantidad": 1, "unidad": "pzas" },
+      { "id": "ing_sal", "cantidad": 2, "unidad": "g" },
+      { "id": "ing_pimienta_negra", "cantidad": 1, "unidad": "g" }
+    ],
+    "tiempo_preparacion_min": 10,
+    "tiempo_coccion_min": 12,
+    "pasos": [
+      "1. Cocina el pollo.",
+      "2. Corta lechuga y tomate.",
+      "3. Mezcla con pollo.",
+      "4. Agrega limón, sal y pimienta.",
+      "5. Rellena la tortilla y enrolla."
+    ]
+  },
+
+  {
+    "nombre": "Sopa rápida de verduras",
+    "tipo": "sopa",
+    "ingredientes": [
+      { "id": "ing_zanahoria", "cantidad": 80, "unidad": "g" },
+      { "id": "ing_cebolla_blanca", "cantidad": 25, "unidad": "g" },
+      { "id": "ing_tomate", "cantidad": 70, "unidad": "g" },
+      { "id": "ing_sal", "cantidad": 2, "unidad": "g" },
+      { "id": "ing_pimienta_negra", "cantidad": 1, "unidad": "g" }
+    ],
+    "tiempo_preparacion_min": 10,
+    "tiempo_coccion_min": 15,
+    "pasos": [
+      "1. Pica todas las verduras.",
+      "2. Sofríe cebolla.",
+      "3. Agrega zanahoria y tomate.",
+      "4. Añade agua.",
+      "5. Cocina hasta ablandar.",
+      "6. Sazona."
+    ]
+  },
+
+  {
+    "nombre": "Pollo al limón con arroz",
+    "tipo": "carne",
+    "ingredientes": [
+      { "id": "ing_pechuga_pollo", "cantidad": 150, "unidad": "g" },
+      { "id": "ing_limon", "cantidad": 1, "unidad": "pzas" },
+      { "id": "ing_aceite_oliva", "cantidad": 8, "unidad": "g" },
+      { "id": "ing_sal", "cantidad": 2, "unidad": "g" },
+      { "id": "ing_pimienta_negra", "cantidad": 1, "unidad": "g" },
+      { "id": "ing_arroz_blanco", "cantidad": 120, "unidad": "g" }
+    ],
+    "tiempo_preparacion_min": 10,
+    "tiempo_coccion_min": 15,
+    "pasos": [
+      "1. Marina el pollo con limón, sal y pimienta.",
+      "2. Cocínalo en sartén.",
+      "3. Cocina el arroz.",
+      "4. Sirve el pollo sobre el arroz."
+    ]
+  },
+
+  {
+    "nombre": "Pescado al limón con verduras",
+    "tipo": "carne",
+    "ingredientes": [
+      { "id": "ing_filete_pescado_blanco", "cantidad": 150, "unidad": "g" },
+      { "id": "ing_cebolla_blanca", "cantidad": 25, "unidad": "g" },
+      { "id": "ing_zanahoria", "cantidad": 70, "unidad": "g" },
+      { "id": "id_limon", "cantidad": 1, "unidad": "pzas" },
+      { "id": "ing_sal", "cantidad": 2, "unidad": "g" },
+      { "id": "ing_pimienta_negra", "cantidad": 1, "unidad": "g" }
+    ],
+    "tiempo_preparacion_min": 8,
+    "tiempo_coccion_min": 10,
+    "pasos": [
+      "1. Sazona el pescado.",
+      "2. Corta y sofríe verduras.",
+      "3. Cocina el pescado.",
+      "4. Sirve con verduras encima."
+    ]
+  },
+
+  {
+    "nombre": "Brownies rápidos",
+    "tipo": "dulce",
+    "ingredientes": [
+      { "id": "ing_harina_trigo", "cantidad": 80, "unidad": "g" },
+      { "id": "ing_azucar", "cantidad": 60, "unidad": "g" },
+      { "id": "ing_cacao", "cantidad": 25, "unidad": "g" },
+      { "id": "ing_mantequilla", "cantidad": 40, "unidad": "g" },
+      { "id": "ing_huevo", "cantidad": 1, "unidad": "pzas" },
+      { "id": "ing_vainilla", "cantidad": 2, "unidad": "g" }
+    ],
+    "tiempo_preparacion_min": 10,
+    "tiempo_coccion_min": 20,
+    "pasos": [
+      "1. Mezcla mantequilla derretida con azúcar.",
+      "2. Añade huevos y vainilla.",
+      "3. Incorpora cacao y harina.",
+      "4. Vierte en molde.",
+      "5. Hornea 20 minutos."
+    ]
+  },
+
+  {
+    "nombre": "Manzanas con canela estilo casero",
+    "tipo": "dulce",
+    "ingredientes": [
+      { "id": "ing_manzana", "cantidad": 1, "unidad": "pzas" },
+      { "id": "ing_azucar", "cantidad": 20, "unidad": "g" },
+      { "id": "ing_mantequilla", "cantidad": 15, "unidad": "g" }
+    ],
+    "tiempo_preparacion_min": 5,
+    "tiempo_coccion_min": 10,
+    "pasos": [
+      "1. Corta las manzanas en cubos.",
+      "2. Derrite mantequilla en sartén.",
+      "3. Agrega manzana y azúcar.",
+      "4. Cocina hasta caramelizar."
+    ]
+  },
+
+  {
+    "nombre": "Panqué de plátano sencillo",
+    "tipo": "dulce",
+    "ingredientes": [
+      { "id": "ing_platano", "cantidad": 1, "unidad": "pzas" },
+      { "id": "ing_harina_trigo", "cantidad": 90, "unidad": "g" },
+      { "id": "ing_azucar", "cantidad": 40, "unidad": "g" },
+      { "id": "ing_huevo", "cantidad": 1, "unidad": "pzas" },
+      { "id": "ing_mantequilla", "cantidad": 25, "unidad": "g" },
+      { "id": "ing_vainilla", "cantidad": 2, "unidad": "g" }
+    ],
+    "tiempo_preparacion_min": 10,
+    "tiempo_coccion_min": 30,
+    "pasos": [
+      "1. Machaca los plátanos.",
+      "2. Mezcla con huevo y mantequilla.",
+      "3. Agrega azúcar y harina.",
+      "4. Añade vainilla.",
+      "5. Hornea 30 minutos."
+    ]
+  },
+
+  {
+    "nombre": "Galletas de mantequilla",
+    "tipo": "dulce",
+    "ingredientes": [
+      { "id": "ing_harina_trigo", "cantidad": 80, "unidad": "g" },
+      { "id": "ing_azucar", "cantidad": 40, "unidad": "g" },
+      { "id": "ing_mantequilla", "cantidad": 40, "unidad": "g" },
+      { "id": "ing_huevo", "cantidad": 1, "unidad": "pzas" },
+      { "id": "ing_vainilla", "cantidad": 2, "unidad": "g" }
+    ],
+    "tiempo_preparacion_min": 12,
+    "tiempo_coccion_min": 12,
+    "pasos": [
+      "1. Mezcla mantequilla con azúcar.",
+      "2. Agrega huevo y vainilla.",
+      "3. Incorpora harina.",
+      "4. Forma pequeñas bolitas.",
+      "5. Hornea 12 minutos."
+    ]
+  }
+]
