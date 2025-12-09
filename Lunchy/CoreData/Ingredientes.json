@@ -2,116 +2,139 @@
   {
     "id": "ing_tomate",
     "nombre": "Tomate",
-    "categoria": "frutas_y_verduras"
+    "categoria": "frutas_y_verduras",
+    "unidad": "g"
   },
   {
     "id": "ing_lechuga",
     "nombre": "Lechuga",
-    "categoria": "frutas_y_verduras"
+    "categoria": "frutas_y_verduras",
+    "unidad": "g"
   },
   {
     "id": "ing_cebolla_blanca",
     "nombre": "Cebolla blanca",
-    "categoria": "frutas_y_verduras"
+    "categoria": "frutas_y_verduras",
+    "unidad": "g"
   },
   {
     "id": "ing_zanahoria",
     "nombre": "Zanahoria",
-    "categoria": "frutas_y_verduras"
+    "categoria": "frutas_y_verduras",
+    "unidad": "g"
   },
   {
     "id": "ing_limon",
     "nombre": "Limón",
-    "categoria": "condimentos"
+    "categoria": "condimentos",
+    "unidad": "pzas"
   },
   {
     "id": "ing_ajo",
     "nombre": "Ajo",
-    "categoria": "condimentos"
+    "categoria": "condimentos",
+    "unidad": "g"
   },
   {
     "id": "ing_aceite_oliva",
     "nombre": "Aceite de oliva",
-    "categoria": "condimentos"
+    "categoria": "condimentos",
+    "unidad": "g"
   },
   {
     "id": "ing_sal",
     "nombre": "Sal",
-    "categoria": "condimentos"
+    "categoria": "condimentos",
+    "unidad": "g"
   },
   {
     "id": "ing_pimienta_negra",
     "nombre": "Pimienta negra",
-    "categoria": "condimentos"
+    "categoria": "condimentos",
+    "unidad": "g"
   },
   {
     "id": "ing_pechuga_pollo",
     "nombre": "Pechuga de pollo",
-    "categoria": "carne_pollo_pescado"
+    "categoria": "carne_pollo_pescado",
+    "unidad": "g"
   },
   {
     "id": "ing_molida_res",
     "nombre": "Carne molida de res",
-    "categoria": "carne_pollo_pescado"
+    "categoria": "carne_pollo_pescado",
+    "unidad": "g"
   },
   {
     "id": "ing_filete_pescado_blanco",
     "nombre": "Filete de pescado blanco",
-    "categoria": "carne_pollo_pescado"
+    "categoria": "carne_pollo_pescado",
+    "unidad": "g"
   },
   {
     "id": "ing_arroz_blanco",
     "nombre": "Arroz blanco",
-    "categoria": "cereales"
+    "categoria": "cereales",
+    "unidad": "g"
   },
   {
     "id": "ing_pasta_corta",
     "nombre": "Pasta corta",
-    "categoria": "cereales"
+    "categoria": "cereales",
+    "unidad": "g"
   },
   {
     "id": "ing_tortilla_harina",
     "nombre": "Tortilla de harina",
-    "categoria": "cereales"
+    "categoria": "cereales",
+    "unidad": "pzas"
   },
   {
     "id": "ing_azucar",
     "nombre": "Azúcar",
-    "categoria": "dulces"
+    "categoria": "dulces",
+    "unidad": "g"
   },
   {
     "id": "ing_harina_trigo",
     "nombre": "Harina de trigo",
-    "categoria": "dulces"
+    "categoria": "dulces",
+    "unidad": "g"
   },
   {
     "id": "ing_mantequilla",
     "nombre": "Mantequilla",
-    "categoria": "dulces"
+    "categoria": "dulces",
+    "unidad": "g"
   },
   {
     "id": "ing_huevo",
     "nombre": "Huevo",
-    "categoria": "dulces"
+    "categoria": "dulces",
+    "unidad": "pzas"
   },
   {
     "id": "ing_cacao",
     "nombre": "Cacao en polvo",
-    "categoria": "dulces"
+    "categoria": "dulces",
+    "unidad": "g"
   },
   {
     "id": "ing_platano",
     "nombre": "Plátano",
-    "categoria": "frutas_y_verduras"
+    "categoria": "frutas_y_verduras",
+    "unidad": "pzas"
   },
   {
     "id": "ing_manzana",
     "nombre": "Manzana",
-    "categoria": "frutas_y_verduras"
+    "categoria": "frutas_y_verduras",
+    "unidad": "pzas"
   },
   {
     "id": "ing_vainilla",
     "nombre": "Vainilla",
-    "categoria": "dulces"
+    "categoria": "dulces",
+    "unidad": "g"
   }
 ]
