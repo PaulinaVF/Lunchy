@@ -32,12 +32,7 @@ final class IngredientsViewModel: ObservableObject {
     }
 
     func unit(for ingredient: Ingredient) -> String {
-        switch ingredient.categoria {
-        case "frutas_y_verduras", "carne_pollo_pescado":
-            return "pzas"
-        default:
-            return "g"
-        }
+        ingredient.unidad
     }
 
     func quantity(

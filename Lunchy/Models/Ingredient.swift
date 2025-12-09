@@ -11,4 +11,5 @@ struct Ingredient: Identifiable, Codable {
     let id: String        // coincide con el "id" del JSON
     let nombre: String
     let categoria: String
+    let unidad: String
 }
