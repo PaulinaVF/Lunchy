@@ -26,14 +26,15 @@ La app te permite registrar tus ingredientes, organizar tu despensa y recibir su
 - Identifica recetas “completas” y “casi completas” (que solo te falte 1 o 2 ingredientes).
 - Presenta las mejores opciones para cocinar ese día.
 
-### Próximas funciones
+### Filtros
 - Filtros por tiempo estimado y tipo de comida.
 - Favoritos.
-- Historial de recetas recientes.
-- Mejoras generales de UX/UI.
 
 ---
 
-## Grabación de pantalla
+## Grabación de pantalla general
 ![Simulator Screen Recording - iPhone 16 - 2025-12-08 at 23 24 39](https://github.com/user-attachments/assets/e947a984-f7dd-437b-9e80-b1041fc64af0)
+
+## Grabación de pantalla (Filtros)
+![Simulator Screen Recording - iPhone 16 - 2025-12-16 at 00 57 28](https://github.com/user-attachments/assets/7e86591d-2f33-49c9-b183-6f29b5d805b1)
 
