@@ -7,8 +7,6 @@
 
 import Foundation
 
-import Foundation
-
 final class RecipeDetailViewModel: ObservableObject {
     struct DisplayIngredient: Identifiable {
         let id: String

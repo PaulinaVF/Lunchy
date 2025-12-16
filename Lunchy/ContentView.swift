@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var filtersVM = FiltersViewModel()
+
     var body: some View {
         TabView {
             RecipesListView(viewModel: RecipesListViewModel())
@@ -22,6 +24,7 @@ struct ContentView: View {
                     Text("Ingredientes")
                 }
         }
+        .environmentObject(filtersVM)
         .accentColor(.lunchyBlue)
     }
 }

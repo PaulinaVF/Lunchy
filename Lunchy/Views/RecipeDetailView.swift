@@ -6,10 +6,19 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct RecipeDetailView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var modelContext
+
+    @Query private var favoriteRecipes: [FavoriteRecipe]
+
     @StateObject var viewModel: RecipeDetailViewModel
+
+    @State private var showToast = false
+    @State private var toastText = ""
+    @State private var isFav = false
 
     var body: some View {
         ZStack {
@@ -20,8 +29,7 @@ struct RecipeDetailView: View {
 
                 ScrollView {
                     VStack(alignment: .leading, spacing: 24) {
-                        Text(viewModel.recipe.nombre)
-                            .font(.system(size: 24, weight: .bold))
+                        titleRow
 
                         Text("Tiempo estimado")
                             .font(.system(size: 16, weight: .semibold))
@@ -45,21 +53,27 @@ struct RecipeDetailView: View {
             }
         }
         .navigationBarHidden(true)
+        .overlay(alignment: .bottom) {
+            if showToast {
+                ToastView(text: toastText)
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+            }
+        }
+        .onAppear {
+            refreshFavoriteState()
+        }
     }
 
     // MARK: - Header
 
     private var headerBar: some View {
         ZStack {
-            Color.lunchyLightBlue
-                .ignoresSafeArea(edges: .top)
+            Color.lunchyLightBlue.ignoresSafeArea(edges: .top)
 
             HStack {
-                Button {
-                    dismiss()
-                } label: {
+                Button { dismiss() } label: {
                     Image(systemName: "chevron.left")
-                        .font(.system(size: 25, weight: .semibold))
+                        .font(.system(size: 20, weight: .semibold))
                         .foregroundColor(.black)
                 }
 
@@ -81,21 +95,82 @@ struct RecipeDetailView: View {
         .frame(height: 100)
     }
 
+    private var titleRow: some View {
+        HStack {
+            Text(viewModel.recipe.nombre)
+                .font(.system(size: 24, weight: .bold))
+
+            Spacer()
+
+            Button {
+                toggleFavorite()
+            } label: {
+                Image(systemName: isFav ? "heart.fill" : "heart")
+                    .font(.system(size: 26, weight: .semibold))
+                    .foregroundColor(.red)
+            }
+            .buttonStyle(.plain)
+        }
+    }
+
+    private var isFavorite: Bool {
+        favoriteRecipes.contains(where: { $0.recipeName == viewModel.recipe.nombre })
+    }
+    
+    private func refreshFavoriteState() {
+        let name = viewModel.recipe.nombre
+        let descriptor = FetchDescriptor<FavoriteRecipe>(
+            predicate: #Predicate { $0.recipeName == name }
+        )
+        let count = (try? modelContext.fetchCount(descriptor)) ?? 0
+        isFav = count > 0
+    }
+
+    private func toggleFavorite() {
+        do {
+            if let existing = favoriteRecipes.first(where: { $0.recipeName == viewModel.recipe.nombre }) {
+                modelContext.delete(existing)
+                try modelContext.save()
+                showToastMessage("Se ha eliminado de favoritos")
+                refreshFavoriteState()
+            } else {
+                modelContext.insert(FavoriteRecipe(recipeName: viewModel.recipe.nombre))
+                try modelContext.save()
+                showToastMessage("Se ha agregado a favoritos")
+                refreshFavoriteState()
+            }
+
+            // Debug rápido
+            let all = try modelContext.fetch(FetchDescriptor<FavoriteRecipe>())
+            print("Favorites en DB:", all.map(\.recipeName))
+
+        } catch {
+            print("SwiftData save error:", error)
+            showToastMessage("Error al guardar favoritos")
+        }
+    }
+
+
+    private func showToastMessage(_ text: String) {
+        toastText = text
+        withAnimation(.easeInOut) { showToast = true }
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
+            withAnimation(.easeInOut) { showToast = false }
+        }
+    }
+
     // MARK: - Cards
 
     private var timeCard: some View {
         VStack(spacing: 0) {
             timeRow(label: "Preparación", value: "\(viewModel.recipe.tiempo_preparacion_min) minutos")
 
-            Divider()
-                .padding(.horizontal, 4)
-                .padding(.vertical, 4)
+            Divider().padding(.horizontal, 4).padding(.vertical, 6)
 
             timeRow(label: "Cocción", value: "\(viewModel.recipe.tiempo_coccion_min) minutos")
 
-            Divider()
-                .padding(.horizontal, 4)
-                .padding(.vertical, 4)
+            Divider().padding(.horizontal, 4).padding(.vertical, 6)
 
             timeRow(label: "Total", value: "\(viewModel.totalTime) minutos")
         }
@@ -112,7 +187,7 @@ struct RecipeDetailView: View {
             Text(value)
         }
         .font(.system(size: 15))
-        .padding(.vertical, 12)   // espacio entre tiempos
+        .padding(.vertical, 10)
     }
 
     private var ingredientsCard: some View {
@@ -126,7 +201,7 @@ struct RecipeDetailView: View {
                         .frame(alignment: .trailing)
                 }
                 .font(.system(size: 15))
-                .padding(.vertical, 12)   // ← antes 6, AHORA igual al tab de ingredientes
+                .padding(.vertical, 12)
 
                 if ing.id != viewModel.ingredients.last?.id {
                     Divider()
@@ -147,12 +222,10 @@ struct RecipeDetailView: View {
                 Text(step)
                     .font(.system(size: 15))
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.vertical, 12)  // espacio entre pasos
+                    .padding(.vertical, 12)
 
                 if step != viewModel.recipe.pasos.last {
-                    Divider()
-                        .padding(.horizontal, 4)
-                        .padding(.vertical, 2)
+                    Divider().padding(.horizontal, 4).padding(.vertical, 6)
                 }
             }
         }

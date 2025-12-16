@@ -13,6 +13,9 @@ struct LunchyApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: IngredientStock.self)
+        .modelContainer(for: [
+            IngredientStock.self,
+            FavoriteRecipe.self
+        ])
     }
 }

@@ -6,10 +6,17 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct RecipesListView: View {
     @StateObject var viewModel: RecipesListViewModel
+
+    @EnvironmentObject private var filtersVM: FiltersViewModel
+
+    @State private var showFiltersSheet = false
     @State private var showMatch = false
+
+    @Query private var favoriteRecipes: [FavoriteRecipe]
 
     var body: some View {
         NavigationStack {
@@ -22,13 +29,15 @@ struct RecipesListView: View {
                     VStack(spacing: 16) {
                         buttonsRow
 
+                        if filtersVM.filters.isActive {
+                            activeFiltersRow
+                        }
+
                         ScrollView {
                             VStack(spacing: 16) {
-                                ForEach(viewModel.recipes) { recipe in
+                                ForEach(viewModel.filteredRecipes(using: filtersVM.filters, favorites: favoriteRecipes)) { recipe in
                                     NavigationLink {
-                                        RecipeDetailView(
-                                            viewModel: RecipeDetailViewModel(recipe: recipe)
-                                        )
+                                        RecipeDetailView(viewModel: RecipeDetailViewModel(recipe: recipe))
                                     } label: {
                                         RecipeRow(
                                             recipe: recipe,
@@ -48,6 +57,11 @@ struct RecipesListView: View {
             .navigationBarHidden(true)
             .navigationDestination(isPresented: $showMatch) {
                 MatchView(viewModel: MatchViewModel(recipes: viewModel.recipes))
+            }
+            .sheet(isPresented: $showFiltersSheet) {
+                FiltersSheetView(current: filtersVM.filters) { newFilters in
+                    filtersVM.filters = newFilters
+                }
             }
         }
     }
@@ -79,9 +93,7 @@ struct RecipesListView: View {
                     .cornerRadius(18)
             }
 
-            Button {
-                // TODO: filtros
-            } label: {
+            Button { showFiltersSheet = true } label: {
                 Text("Filtros")
                     .font(.system(size: 16, weight: .semibold))
                     .frame(maxWidth: .infinity)
@@ -92,5 +104,22 @@ struct RecipesListView: View {
             }
         }
         .padding(.horizontal)
+    }
+
+    private var activeFiltersRow: some View {
+        HStack(spacing: 12) {
+            Text(filtersVM.activeDescription())
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundColor(.black.opacity(0.7))
+                .lineLimit(2)
+
+            Spacer()
+
+            Button("Eliminar filtros") { filtersVM.clear() }
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundColor(.lunchyBlue)
+        }
+        .padding(.horizontal)
+        .padding(.top, 4)
     }
 }

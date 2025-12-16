@@ -6,8 +6,10 @@
 //
 
 import Foundation
+import SwiftData
 
 final class MatchViewModel: ObservableObject {
+
     struct DisplayIngredient: Identifiable {
         let id: String
         let nombre: String
@@ -19,6 +21,7 @@ final class MatchViewModel: ObservableObject {
         let id = UUID()
         let recipe: Recipe
         let ingredientes: [DisplayIngredient]
+        let missingCount: Int
     }
 
     @Published var matches: [MatchRecipe] = []
@@ -32,22 +35,40 @@ final class MatchViewModel: ObservableObject {
         self.ingredientsById = Dictionary(uniqueKeysWithValues: allIngredients.map { ($0.id, $0) })
     }
 
-    func updateMatches(stocks: [IngredientStock]) {
+    func updateMatches(
+        stocks: [IngredientStock],
+        filters: RecipeFilters,
+        favoriteNames: Set<String>
+    ) {
         var result: [MatchRecipe] = []
 
         for recipe in recipes {
-            var missingCount = 0
-
-            for req in recipe.ingredientes {
-                let have = stocks.first(where: { $0.ingredientId == req.id })?.quantity ?? 0
-                if have + 0.0001 < req.cantidad { // pequeño margen
-                    missingCount += 1
-                    if missingCount > 1 { break }
-                }
+            // Solo favoritos
+            if filters.onlyFavorites, !favoriteNames.contains(recipe.nombre) {
+                continue
             }
 
-            // Aceptar recetas con 0 ingredientes faltantes o solo 1
-            guard missingCount <= 1 else { continue }
+            // Tiempo (siempre aplica)
+            if recipe.tiempoTotal > filters.maxTime {
+                continue
+            }
+
+            // Tipo
+            if !filters.selectedTypes.isEmpty {
+                let t = RecipeType(rawValue: recipe.tipo) ?? .vegetal
+                if !filters.selectedTypes.contains(t) { continue }
+            }
+
+            // Regla match: 0 o 1 faltante
+            var missing = 0
+            for req in recipe.ingredientes {
+                let have = stocks.first(where: { $0.ingredientId == req.id })?.quantity ?? 0
+                if have + 0.0001 < req.cantidad {
+                    missing += 1
+                    if missing > 1 { break }
+                }
+            }
+            guard missing <= 1 else { continue }
 
             let displayIngredients: [DisplayIngredient] = recipe.ingredientes.compactMap { req in
                 guard let ing = ingredientsById[req.id] else { return nil }
@@ -59,7 +80,7 @@ final class MatchViewModel: ObservableObject {
                 )
             }
 
-            result.append(MatchRecipe(recipe: recipe, ingredientes: displayIngredients))
+            result.append(MatchRecipe(recipe: recipe, ingredientes: displayIngredients, missingCount: missing))
         }
 
         DispatchQueue.main.async {
@@ -78,10 +99,7 @@ final class MatchViewModel: ObservableObject {
     }
 
     func formatted(_ quantity: Double) -> String {
-        if quantity == floor(quantity) {
-            return String(Int(quantity))
-        } else {
-            return String(format: "%.1f", quantity)
-        }
+        if quantity == floor(quantity) { return String(Int(quantity)) }
+        return String(format: "%.1f", quantity)
     }
 }

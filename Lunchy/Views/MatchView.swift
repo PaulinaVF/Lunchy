@@ -10,68 +10,78 @@ import SwiftData
 
 struct MatchView: View {
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.modelContext) private var modelContext
+    @EnvironmentObject private var filtersVM: FiltersViewModel
+
     @Query private var stocks: [IngredientStock]
+    @Query private var favoriteRecipes: [FavoriteRecipe]
 
     @StateObject var viewModel: MatchViewModel
+    @State private var showFiltersSheet = false
 
     var body: some View {
         ZStack {
             Color.lunchyBackground.ignoresSafeArea()
 
             VStack(spacing: 0) {
-                headerLogo
+                headerBar
 
-                if viewModel.matches.isEmpty {
-                    VStack(spacing: 16) {
+                ScrollView {
+                    VStack(spacing: 10) {
                         Text("Aquí están tus match!")
                             .font(.system(size: 24, weight: .bold))
                             .padding(.top, 20)
 
-                        Text("Aún no hay recetas con tus ingredientes.\nActualiza tus cantidades en la pestaña de Ingredientes.")
-                            .multilineTextAlignment(.center)
-                            .foregroundColor(.gray)
-                            .padding(.horizontal)
-                    }
-                    Spacer()
-                } else {
-                    Text("Aquí están tus match!")
-                        .font(.system(size: 24, weight: .bold))
-                        .padding(.top, 20)
+                        if filtersVM.filters.isActive {
+                            activeFiltersRow
+                        }
 
-                    TabView {
-                        ForEach(viewModel.matches) { match in
-                            matchCard(match)
+                        if viewModel.matches.isEmpty {
+                            Text("No hay recetas que coincidan con tus ingredientes y filtros.")
+                                .foregroundColor(.gray)
+                                .multilineTextAlignment(.center)
+                                .padding(.horizontal)
+                                .padding(.top, 24)
+                        } else {
+                            TabView {
+                                ForEach(viewModel.matches) { match in
+                                    matchCard(match)
+                                }
+                            }
+                            .tabViewStyle(.page)
+                            .indexViewStyle(.page(backgroundDisplayMode: .always))
+                            .frame(height: 560)
+                            .padding(.top, 0)
                         }
                     }
-                    .tabViewStyle(.page)
-                    .indexViewStyle(.page(backgroundDisplayMode: .always))
-                    .frame(height: 520)
-
-                    Spacer()
+                    .padding(.bottom, 20)
                 }
             }
         }
-        .onAppear {
-            viewModel.updateMatches(stocks: stocks)
-        }
-        .onChange(of: stocks) {
-            viewModel.updateMatches(stocks: stocks)
+        .onAppear { refresh() }
+        .onChange(of: stocks) { refresh() }
+        .onChange(of: favoriteRecipes) { refresh() }
+        .onChange(of: filtersVM.filters) { refresh() }
+        .sheet(isPresented: $showFiltersSheet) {
+            FiltersSheetView(current: filtersVM.filters) { newFilters in
+                filtersVM.filters = newFilters
+            }
         }
         .navigationBarHidden(true)
     }
 
-    private var headerLogo: some View {
+    private func refresh() {
+        let favNames = Set(favoriteRecipes.map(\.recipeName))
+        viewModel.updateMatches(stocks: stocks, filters: filtersVM.filters, favoriteNames: favNames)
+    }
+
+    private var headerBar: some View {
         ZStack {
-            Color.lunchyLightBlue
-                .ignoresSafeArea(edges: .top)
+            Color.lunchyLightBlue.ignoresSafeArea(edges: .top)
 
             HStack {
-                Button {
-                    dismiss()
-                } label: {
+                Button { dismiss() } label: {
                     Image(systemName: "chevron.left")
-                        .font(.system(size: 25, weight: .semibold))
+                        .font(.system(size: 20, weight: .semibold))
                         .foregroundColor(.black)
                 }
 
@@ -84,13 +94,35 @@ struct MatchView: View {
 
                 Spacer()
 
-                // espacio para centrar el logo respecto al botón
-                Color.clear.frame(width: 24)
+                Button { showFiltersSheet = true } label: {
+                    Image(systemName: "line.3.horizontal")
+                        .font(.system(size: 20, weight: .semibold))
+                        .foregroundColor(.black)
+                }
             }
             .padding(.horizontal)
             .padding(.bottom, 8)
         }
         .frame(height: 100)
+    }
+
+    private var activeFiltersRow: some View {
+        HStack(spacing: 12) {
+            Text(filtersVM.activeDescription())
+                .font(.system(size: 14, weight: .semibold))
+                .foregroundColor(.black.opacity(0.7))
+                .lineLimit(2)
+
+            Spacer()
+
+            Button("Eliminar filtros") {
+                filtersVM.clear()
+            }
+            .font(.system(size: 14, weight: .semibold))
+            .foregroundColor(.lunchyBlue)
+        }
+        .padding(.horizontal, 24)
+        .padding(.top, 4)
     }
 
     private func matchCard(_ match: MatchViewModel.MatchRecipe) -> some View {
@@ -103,7 +135,7 @@ struct MatchView: View {
             Text(match.recipe.nombre)
                 .font(.system(size: 22, weight: .bold))
 
-            VStack(spacing: 12) {
+            VStack(spacing: 10) {
                 ForEach(match.ingredientes) { ing in
                     HStack {
                         Text(ing.nombre)
@@ -113,12 +145,12 @@ struct MatchView: View {
                     .font(.system(size: 16))
 
                     if ing.id != match.ingredientes.last?.id {
-                        Divider()
+                        Divider().padding(.horizontal, 4).padding(.vertical, 6)
                     }
                 }
             }
-            .padding(.horizontal)
-            .padding(.vertical, 12)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 20)
             .background(Color.white)
             .cornerRadius(24)
         }
